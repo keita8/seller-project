@@ -1,0 +1,68 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    | Se connecter
+{% endblock title %}
+
+
+
+{% block content %}
+
+
+        <!-- MAIN SECTION -->
+        <main>
+            <div class="container">
+                <div class="wrapper login-wrapper">
+                    <div class="login">
+                        <div class="content-heading">
+                            <div class="y-style">
+                                <div class="logo"><a href=""><span></span></a></div>
+                                <div class="welcome">
+                                    <h2 class="loging">Se connecter</h2>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-form">
+                            <div class="y-style">
+                                <form action="{% url 'accounts:login' %}" method="POST">
+                                    {% csrf_token %}
+                                    <p>
+                                        <label for="email">Adresse email</label>
+                                        {{ form.email }}
+                                    </p>
+                                    <p>
+                                        <label for="password">Mot de passe</label>
+                                        {{ form.password }}
+                                    </p>
+                                    <p class="forgot">
+                                        <a href="{% url 'accounts:reset-password' %}">Mot de passe oublié ?</a>
+                                    </p>
+
+                                    <p>
+                                        <button type="submit" class="primary-button">Se connecter</button>
+                                    </p>
+                                </form>
+
+                                <div class="afterform">
+                                    <p>Vous n'avez pas encore de compte ?</p>
+                                    <a href="{% url 'accounts:register' %}" class="t-signup">S'inscrire</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+        <!-- MAIN SECTION -->
+
+
+    
+{% endblock content %}
+    
+    

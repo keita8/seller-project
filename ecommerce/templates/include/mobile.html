@@ -1,0 +1,86 @@
+{% load static %}
+<div class="menu-bottom desktop-hide ">
+    <div class="container ">
+        <div class="wrapper ">
+            <nav>
+                <ul class="flexitem ">
+                    <li>
+                        <a href="# ">
+                            <ion-icon name="trending-up-outline"></ion-icon>
+                            <span>Tendance</span>
+                        </a>
+                    </li>
+                    
+                    {% if request.user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'accounts:logout' %}">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                            <span>Quitter</span>
+                        </a>
+                    </li>    
+                    {% else %}
+      
+                    <li>
+                        <a href="{% url 'accounts:login' %}">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                            <span>Connexion</span>
+                        </a>
+                    </li>
+
+                                            
+                    {% endif %}
+                  
+
+                    <li>
+                        <a href="#">
+                            <ion-icon name="heart-outline"></ion-icon>
+                            <span>Wishlist</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0" class="t-search ">
+                            <ion-icon name="search-outline"></ion-icon>
+                            <span>Chercher</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'cart:main' %}" class="cart-trigger">
+                            <ion-icon name="cart-outline"></ion-icon>
+                            <span>Panier</span>
+                            <div class="fly-item" style="background:#ff6b6b; border-radius: 100%;">
+                                <span class="item-number" style="text-align: center;">100</span>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="./page-cart.html" class="cart-trigger ">
+                            <i class="ri-shopping-cart-line "></i>
+                            <span>Panier</span>
+                            <div class="fly-item ">
+                                <span class="item-number ">3</span>
+                            </div>
+                        </a>
+                    </li> -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- MOBILE MENU -->
+
+
+
+<div class="search-bottom desktop-hide ">
+    <div class="container ">
+        <div class="wrapper ">
+            <form action="." class="search ">
+                <a href="#" class="t-close search-close flexcenter ">
+                    <i class="ri-close-line "></i>
+                </a>
+                <!-- <span class=" icon-large "><i class="ri-search-line "></i></span> -->
+                <input type="search " name="search " id="search " placeholder="Chercher un article " required>
+                <button type="submit ">Chercher</button>
+            </form>
+        </div>
+    </div>
+</div>

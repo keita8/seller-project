@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>
+        Market
+        {% block title %}
+            
+        {% endblock title %}
+            
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div id="page" class="site page-single">
+
+        <!-- ASIDE -->
+        <aside class="site-off desktop-hide">
+            <div class="off-canvas">
+                <div class="canvas-head flexitem">
+                    <div class="logo"><a href="/"><span class="circle"></span>Makeety</a></div>
+                    <a href="#" class="t-close flexcenter"><i class="ri-close-line"></i></a>
+                </div>
+                <div class="departments"></div>
+                <nav></nav>
+                <div class="thetop-nav"></div>
+            </div>
+        </aside>
+        <!-- ASIDE -->
+
+
+
+        <!-- HEADER -->
+        {% include 'include/header.html' %}
+        <!-- HEADER -->
+
+
+        <!-- CONTENT-->
+        
+        {% block content %}
+            
+        {% endblock content %}
+            
+        <!-- CONTENT-->
+
+
+        <!-- FOOTER SECTION -->
+        {% include 'include/footer.html' %}
+        <!-- FOOTER SECTION -->
+
+
+        <!-- MOBILE MENU -->
+        {% include 'include/mobile.html' %}
+
+
+        <div class="overlay "></div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.js "></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <!-- IONICONS -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

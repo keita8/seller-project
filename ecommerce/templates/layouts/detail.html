@@ -1,0 +1,647 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    | {{ detail.title|safe|capfirst }}
+{% endblock title %}
+    
+
+
+{% block content %}
+    
+    
+        <!-- MAIN SECTION -->
+        <main>
+
+            <div class="single-product">
+                <div class="container">
+                    <div class="wrapper">
+
+                        <div class="breadcrumb">
+                            <ul class="flexitem">
+                                <li>
+                                    <a href="/">Accueil</a>
+                                </li>
+                            
+                                <li>
+                                    {{ detail.title|safe|capfirst }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="column">
+                            <div class="products one">
+                                <div class="flexwrap">
+                                    <div class="row">
+                                        <div class="item is_sticky">
+                                            <div class="price">
+                                                <span class="discount">-32%<br>OFF</span>
+                                            </div>
+
+                                            <div class="big-image">
+                                                
+                                                    
+                                                <div class="big-image-wrapper swiper-wrapper">
+                                                    {% for item in detail.image.all %}
+                                                        
+                                                    <div class="image-show swiper-slide">
+                                                        <a data-fslightbox href="{{ item.image.url }}">
+                                                            <img src="{{ item.image.url }}" alt="{{ detail.title|safe|capfirst }}" width="700" height="700">
+                                                        </a>
+                                                    </div>
+
+                                                    {% endfor %}
+
+                                                </div>
+
+
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div>
+                                            </div>
+
+                                            <div thumbSlider="" class="small-image">
+                                                <ul class="small-image-wrapper flexitem swiper-wrapper">
+
+                                                    {% for item in detail.image.all %}                                                    
+                                                    <li class="thumbnail-show swiper-slide" style="cursor: pointer !important;">
+                                                        <img src="{{ item.image.url }}" alt="{{ item.title|safe|capfirst }}">
+                                                    </li>
+                                                    {% endfor %}
+                                                        
+                                                </ul>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="item">
+                                            <h1>
+                                                {{ detail.title|safe|capfirst }}
+                                            </h1>
+                                            <div class="content">
+                                                <div class="rating single-page-rating">
+
+                                                    <div class="stars">
+                                                        <ion-icon name="star-sharp"></ion-icon>
+                                                        <ion-icon name="star-sharp"></ion-icon>
+                                                        <ion-icon name="star-sharp"></ion-icon>
+                                                        <ion-icon name="star-sharp"></ion-icon>
+                                                        <ion-icon name="star-half-sharp"></ion-icon>
+                                                    </div>
+                                                    <div class="mini-text">
+                                                        <a class="mini-text">(2.51)</a>
+                                                    </div>
+
+                                                    <!-- <div class="add-review">
+                                                        <a href="" class="add-review mini-text">Votre avis</a>
+                                                    </div> -->
+
+                                                </div>
+
+                                                <div class="stock-sku">
+                                                    {% if detail.quantity >= 1 %}
+                                                    <div class="available">En stock</div>
+                                                    {% else %}
+                                                    <div class="available" style="color: red;">En rupture</div>
+                                                    {% endif %}
+                                                    <div class="sku mini-text">{{ detail.reference }}</div>
+                                                </div>
+
+                                                <div class="price">
+                                                    <span class="current" value="{{detail.price}}">
+                                                        {{ detail.price }}
+                                                    </span>
+                                                </div>
+
+                                                <form action="" aria-required="data" required method="POST" class="choices-features">
+                                                    <div class="colors">
+                                                        <label for="color">Couleur</label>
+                                                        <div class="variant">
+
+                                                            <!-- <label for="color">Couleur</label> -->
+                                                            <select name="color" id="color">
+                                                                <option>-------</option>
+                                                                <option value="rouge">Rouge</option>
+                                                                <option value="vert">Vert</option>
+                                                                <option value="jaune">Jaune</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="sizes">
+                                                        <label for="sizes">Taille</label>
+                                                        <div class="variant">
+                                                            <select name="sizes" id="sizes">
+                                                                <option>-------</option>
+                                                                <option value="sm">SM</option>
+                                                                <option value="xl">M</option>
+                                                                <option value="XXL">XXL</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="actions">
+                                                        <div class="qty-control flexitem">
+                                                            <button class="minus circle"> &minus; </button>
+                                                            <input type="text" value="1" min="1">
+                                                            <button class="plus circle"> &plus; </button>
+                                                        </div>
+
+                                                        <div class="button-cart">
+                                                            <a href="{% url 'cart:add' detail.slug %}" class="primary-button" style="cursor: pointer !important;">
+                                                                <!-- <button class="primary-button" style="cursor: pointer !important;"> -->
+                                                                Ajouter au panier
+                                                                <!-- </button> -->
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                                <div class="wishe-share">
+                                                    <ul class="flexitem second-links">
+                                                        <!-- <li>
+                                                            <a href="#">
+                                                                <span class="icon-large">
+                                                                    <i class="ri-heart-line"></i>
+                                                                </span>
+                                                            </a>
+                                                        </li> -->
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="icon-large" title="Partager">
+                                                                    <ion-icon name="shuffle-outline" title="Partager"></ion-icon>
+                                                                </span>
+                                                                
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="description collapse">
+                                                    <ul>
+                                                        <li class="has-child expand">
+                                                            <a href="#0" class="icon-small">Informations</a>
+                                                            <ul class="content">
+                                                                <li><span>Marque</span> <span>Nike</span> </li>
+                                                                <li><span>Public</span> <span>Sportif</span> </li>
+                                                                <li><span>Materiel</span> <span>Polyesther</span> </li>
+                                                                <li><span>Genre</span> <span>Femmes</span> </li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="has-child">
+                                                            <a href="#0" class="icon-small">D&eacute;tails</a>
+                                                            <div class="content">
+                                                                <p>
+                                                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. A magnam iure, fugit ipsam maxime eligendi eveniet tempore, harum quidem suscipit odit quia adipisci, unde molestiae earum rem libero voluptate iusto alias enim numquam sunt consequatur quo. Illum
+                                                                    at dolore laboriosam, dolorem fugiat culpa sed. Fuga perferendis nostrum voluptas quia laboriosam eius dignissimos mollitia iste, laborum quibusdam ea facilis blanditiis autem quo minus
+                                                                    quam nihil unde, temporibus recusandae, quisquam modi. Harum suscipit veniam doloremque ullam voluptatum culpa obcaecati, eaque, ab placeat, iure quisquam cumque mollitia quas beatae
+                                                                    aut esse cupiditate optio inventore nisi voluptas enim atque. Nostrum corrupti quos mollitia autem!
+                                                                </p>
+                                                                <p>
+                                                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. A magnam iure, fugit ipsam maxime eligendi eveniet tempore, harum quidem suscipit odit quia adipisci, unde molestiae earum rem libero voluptate iusto alias enim numquam sunt consequatur quo. Illum
+                                                                    at dolore laboriosam, dolorem fugiat culpa sed. Fuga perferendis nostrum voluptas quia laboriosam eius dignissimos mollitia iste, laborum quibusdam ea facilis blanditiis autem quo minus
+                                                                    quam nihil unde, temporibus recusandae, quisquam modi. Harum suscipit veniam doloremque ullam voluptatum culpa obcaecati, eaque, ab placeat, iure quisquam cumque mollitia quas beatae
+                                                                    aut esse cupiditate optio inventore nisi voluptas enim atque. Nostrum corrupti quos mollitia autem!
+                                                                </p>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="has-child">
+                                                            <a href="#0" class="icon-small">Caractéristiques</a>
+                                                            <div class="content">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Taille</th>
+                                                                            <th>Bust<span class="mini-text"> (cm) </span></th>
+                                                                            <th>Whist<span class="mini-text"> (cm) </span></th>
+                                                                            <th>Hip<span class="mini-text"> (cm) </span></th>
+                                                                        </tr>
+                                                                    </thead>
+
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>SM</td>
+                                                                            <td>82.5</td>
+                                                                            <td>62</td>
+                                                                            <td>87.5</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>M</td>
+                                                                            <td>82.5</td>
+                                                                            <td>62</td>
+                                                                            <td>87.5</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>XL</td>
+                                                                            <td>82.5</td>
+                                                                            <td>62</td>
+                                                                            <td>87.5</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>XXL</td>
+                                                                            <td>82.5</td>
+                                                                            <td>62</td>
+                                                                            <td>87.5</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="has-child expand">
+                                                            <!-- AVIS DES CLIENTS -->
+                                                            <a href="#0" class="icon-small">Avis clients</a>
+                                                            <div class="content">
+                                                                <div class="reviews">
+                                                                    <h4>Avis des clients</h4>
+                                                                    <div class="review-block">
+                                                                        <!-- ENTETE AVIS -->
+                                                                        <div class="review-block-head">
+                                                                            <div class="flexitem">
+                                                                                <span class="rate-sum">5.9</span>
+                                                                                <span>2.490 avis</span>
+                                                                            </div>
+
+                                                                            <a href="#review-form" class="primary-button">Laissez votre avis</a>
+                                                                        </div>
+                                                                        <!-- CONTENU DES AVIS -->
+                                                                        <div class="review-block-body">
+                                                                            <ul>
+                                                                                <li class="item">
+                                                                                    <div class="review-form">
+                                                                                        <p class="person">Avis de Sarah</p>
+                                                                                        <p class="mini-text">
+                                                                                            13/sept/2022
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                    <div class="review-rating rating">
+                                                                                        <div class="stars">
+
+                                                                                            <i class="ri-star-fill"></i>
+                                                                                            <i class="ri-star-fill"></i>
+                                                                                            <i class="ri-star-fill"></i>
+                                                                                            <i class="ri-star-fill"></i>
+                                                                                            <i class="ri-star-half-fill"></i>
+
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="review-title">
+                                                                                        Appréciation
+                                                                                    </div>
+
+                                                                                    <div class="review-text">
+                                                                                        <p>This is a sample description of review Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet excepturi commodi quam tempora soluta mollitia laboriosam delectus?
+                                                                                            Quos, voluptatum excepturi.
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li class="item">
+                                                                                    <div class="review-form">
+                                                                                        <p class="person">Avis de Sarah</p>
+                                                                                        <p class="mini-text">
+                                                                                            13/sept/2022
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                    <div class="review-rating rating">
+                                                                                        <div class="stars">
+
+                                                                                            <i class="ri-star-fill"></i>
+                                                                                            <i class="ri-star-fill"></i>
+                                                                                            <i class="ri-star-fill"></i>
+                                                                                            <i class="ri-star-fill"></i>
+                                                                                            <i class="ri-star-half-fill"></i>
+
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="review-title">
+                                                                                        Satisfait(e)
+                                                                                    </div>
+
+                                                                                    <div class="review-text">
+                                                                                        <p>This is a sample description of review Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet excepturi commodi quam tempora soluta mollitia laboriosam delectus?
+                                                                                            Quos, voluptatum excepturi.
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+
+                                                                            <div class="second-links">
+                                                                                <a href="#" class="view-all">
+                                                                                    Tous les avis
+
+                                                                                    <i class="ri-arrow-right-line"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- FORMULAIRE D'AVIS -->
+                                                                        <form action="" method="POST" novalidate id="review-form">
+                                                                            <div id="review-rorm" class="review-form">
+                                                                                <h4>Votre avis</h4>
+                                                                                <div class="rating">
+                                                                                    <p>Êtes-vous satisfait(e) de cet article?</p>
+                                                                                    <div class="rate-this">
+                                                                                        <input type="radio" name="rating" id="star5">
+                                                                                        <label for="star5"><i class="ri-star-fill"></i></label>
+                                                                                        <input type="radio" name="rating" id="star4">
+                                                                                        <label for="star4"><i class="ri-star-fill"></i></label>
+                                                                                        <input type="radio" name="rating" id="star3">
+                                                                                        <label for="star3"><i class="ri-star-fill"></i></label>
+                                                                                        <input type="radio" name="rating" id="star2">
+                                                                                        <label for="star2"><i class="ri-star-fill"></i></label>
+                                                                                        <input type="radio" name="rating" id="star1">
+                                                                                        <label for="star1"><i class="ri-star-fill"></i></label>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                                <p>
+                                                                                    <label for="email">Adresse email</label>
+                                                                                    <input type="email" name="email" id="email" required placeholder="Votre adresse email">
+                                                                                </p>
+                                                                                <p>
+                                                                                    <label for="">Titre</label>
+                                                                                    <input type="text" name="" id="" required placeholder="Remarque">
+                                                                                </p>
+                                                                                <p>
+                                                                                    <label for="customer-review">Votre avis</label>
+                                                                                    <textarea name="customer-review" id="customer-review" cols="30" rows="10" required placeholder="Laissez votre avis..."></textarea>
+                                                                                </p>
+
+                                                                                <p>
+                                                                                    <button class="primary-button" type="submit">
+                                                                                        Soumettre
+                                                                                    </button>
+                                                                                </p>
+
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTICLE SIMILAIRE -->
+            <div class="features">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="column">
+                            <div class="sectop flexitem">
+                                <h2>Articles similaires
+                                </h2>
+                                <!-- <div class="second-links">
+                                    <a href="#" class="wiew-all">
+                                        Tout voir
+                                        <i class="ri-arrow-right-line"></i>
+                                    </a>
+                                </div> -->
+                            </div>
+                            <div class="products main flexwrap">
+                                <div class="item">
+
+                                    <div class="media">
+                                        <div class="thumbnail object-cover">
+                                            <a href="./single-page.html">
+                                                <img src="./img/products/apparel2.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="hoverable">
+                                            <ul>
+                                                <li class="active">
+                                                    <a href=""><i class="ri-shopping-cart-line" title="Ajouter au panier"></i></a>
+                                                </li>
+                                                <li><a href=""><i class="ri-heart-line" title="Liste de souhait"></i></a></li>
+                                                <li><a href=""><i class="ri-eye-line" title="Voir les détails"></i></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="discount circle flexcenter">-50%</div>
+                                    </div>
+
+
+                                    <div class="content">
+
+                                        <h3 class="main-links">
+                                            <a href="">Sneaker</a>
+                                        </h3>
+
+                                        <div class="rating">
+                                            <div class="stars">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <div class="mini-text">
+                                                (2.90)
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="price">
+                                            <span class="current">
+                                                290 000.00 GNF
+                                            </span>
+                                            <span class="normal mini-text">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+
+                                    <div class="media">
+                                        <div class="thumbnail object-cover">
+                                            <a href="./single-page.html">
+                                                <img src="./img/products/apparel4.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="hoverable">
+                                            <ul>
+                                                <li class="active">
+                                                    <a href=""><i class="ri-shopping-cart-line" title="Ajouter au panier"></i></a>
+                                                </li>
+                                                <li><a href=""><i class="ri-heart-line" title="Liste de souhait"></i></a></li>
+                                                <li><a href=""><i class="ri-eye-line" title="Voir les détails"></i></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="discount circle flexcenter">-50%</div>
+                                    </div>
+
+
+                                    <div class="content">
+
+                                        <h3 class="main-links">
+                                            <a href="">Sneaker</a>
+                                        </h3>
+
+                                        <div class="rating">
+                                            <div class="stars">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <div class="mini-text">
+                                                (2.90)
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="price">
+                                            <span class="current">
+                                                290 000.00 GNF
+                                            </span>
+                                            <span class="normal mini-text">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+
+                                    <div class="media">
+                                        <div class="thumbnail object-cover">
+                                            <a href="./single-page.html">
+                                                <img src="./img/products/apparel1.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="hoverable">
+                                            <ul>
+                                                <li class="active">
+                                                    <a href=""><i class="ri-shopping-cart-line" title="Ajouter au panier"></i></a>
+                                                </li>
+                                                <li><a href=""><i class="ri-heart-line" title="Liste de souhait"></i></a></li>
+                                                <li><a href=""><i class="ri-eye-line" title="Voir les détails"></i></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="discount circle flexcenter">-50%</div>
+                                    </div>
+
+
+                                    <div class="content">
+
+                                        <h3 class="main-links">
+                                            <a href="">Sneaker</a>
+                                        </h3>
+
+                                        <div class="rating">
+                                            <div class="stars">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <div class="mini-text">
+                                                (2.90)
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="price">
+                                            <span class="current">
+                                                290 000.00 GNF
+                                            </span>
+                                            <span class="normal mini-text">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+
+                                    <div class="media">
+                                        <div class="thumbnail object-cover">
+                                            <a href="./single-page.html">
+                                                <img src="./img/products/apparel3.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="hoverable">
+                                            <ul>
+                                                <li class="active">
+                                                    <a href=""><i class="ri-shopping-cart-line" title="Ajouter au panier"></i></a>
+                                                </li>
+                                                <li><a href=""><i class="ri-heart-line" title="Liste de souhait"></i></a></li>
+                                                <li><a href=""><i class="ri-eye-line" title="Voir les détails"></i></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="discount circle flexcenter">-50%</div>
+                                    </div>
+
+
+                                    <div class="content">
+
+                                        <h3 class="main-links">
+                                            <a href="">Sneaker</a>
+                                        </h3>
+
+                                        <div class="rating">
+                                            <div class="stars">
+                                                <ion-icon name="star-sharp"></ion-icon>
+                                            </div>
+                                            <div class="mini-text">
+                                                (2.90)
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="price">
+                                            <span class="current">
+                                                290 000.00 GNF
+                                            </span>
+                                            <span class="normal mini-text">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- FIN DE LA SECTION ARTICLE SIMILAIRE -->
+
+        </main>
+        <!-- MAIN SECTION -->
+
+
+
+{% endblock content %}

@@ -1,0 +1,178 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    | Panier
+{% endblock title %}
+    
+
+
+{% block content %}
+
+
+
+        <!-- MAIN SECTION -->
+        <main>
+
+
+            <!-- PANIER D'ARTICLE -->
+            <div class="single-cart">
+                <div class="container">
+                    <div class="wrapper">
+
+                        <div class="products one cart">
+                            <div class="flexwrap">
+                                <form action="" class="form-cart">
+                                    <div class="item">
+                                        <table id="cart-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Article</th>
+                                                    <th>Quantité</th>
+                                                    <th>Prix</th>
+                                                    <!-- <th>Sous total</th> -->
+                                                    <th>Retirer</th>
+                                                </tr>
+                                            </thead>                                                 
+                                            <tbody>
+                                            {% for cart in cart_items %}
+                                                <tr>
+                                                    <td class="flexitem">
+                                                        <div class="thumbnail object-cover">
+                                                            <a href="{{ cart.product.get_absolute_url }}">
+                                                                <img src="{{ cart.product.image.first.url }}" alt="">
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="content">
+                                                            <strong>
+                                                                <a href="{{ cart.product.get_absolute_url }}"> {{ cart.product.title|safe|capfirst }} </a>
+                                                                <p>Couleur: Marron</p>
+                                                                <p>Taille : SM</p>
+                                                            </strong>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="qty-control flexitem">
+                                                            <button class="minus">&minus;</button>
+                                                            <input type="number" name="qty" id="qty" value="1" min="1">
+                                                            <button class="plus">&plus;</button>
+                                                        </div>
+                                                    </td>
+
+                                                    <td> {{ cart.product.price }} GNF </td>
+                                                    <td>
+                                                        <a href="#" class="item-remove">
+                                                            <i class="ri-close-line"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                                <div class="cart-summary styled">
+                                    <div class="item">
+                                        <div class="coupon">
+                                            <input type="text" name="coupon " id="coupon" placeholder="Code promo ">
+                                            <button type="submit">Appliquer</button>
+                                        </div>
+
+                                        <div class="shipping-rate collapse">
+                                            <!-- <div class="has-childe expand ">
+                                                <a href="# " class="icon-small ">Livraison & Taxe</a>
+                                                <div class="content ">
+                                                    <div class="countries ">
+                                                        <form action="# ">
+                                                            <label for="country ">Pays</label>
+                                                            <select name="country " id="country ">
+                                                            <option value="GN ">Guinée</option>
+                                                            <option value="UK ">Royaume Unis</option>
+                                                            <option value="CN ">Chine</option>
+                                                            <option value="RU ">Russie</option>
+                                                        </select>
+                                                        </form>
+                                                    </div>
+                                                    <div class="countries ">
+                                                        <form action="# ">
+                                                            <label for="state ">Ville</label>
+                                                            <select name="state " id="state ">
+                                                            <option value="GN ">Conakry</option>
+                                                            <option value="UK ">Londres</option>
+                                                            <option value="CN ">Pékin</option>
+                                                            <option value="RU ">Moscou</option>
+                                                        </select>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="postal-code ">
+                                                        <form action=" ">
+                                                            <label for="postal ">Code postal</label>
+                                                            <input type="number " name="postal " id="postal " placeholder="Votre code postal ">
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="rate-options variant ">
+                                                        <form action=" ">
+                                                            <p>
+                                                                <span>Flat: 0.00 GNF</span>
+                                                                <input type="radio " name="flat " id="flat " checked>
+                                                                <label for="flat " class="circle "></label>
+                                                            </p>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <div class="cart-total "></div>
+                                        <div class="cart-total ">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>TVA</th>
+                                                        <td>18%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Réduction</th>
+                                                        <td>-100 000.00 GNF</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Livraison <span class="mini-text "></span> </th>
+                                                        <td>50 000.00 GNF</td>
+                                                    </tr>
+                                                    <tr class="grand-total ">
+                                                        <th>TOTAL</th>
+                                                        <td>
+                                                            <strong>
+                                                                36 759 000.00 GNF
+                                                            </strong>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <a href="./checkout.html " class="primary-button">Commander</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- FIN PANIER SECTION -->
+
+
+        </main>
+        <!-- MAIN SECTION -->
+
+
+    
+{% endblock content %}
+    

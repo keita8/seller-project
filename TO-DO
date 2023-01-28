@@ -1,0 +1,47 @@
+- VIDEO
+    - Longue vidéo (films)
+    - Courte vidéo ()
+    - Playlist
+    - Saison -> Playlist -> Playlist
+
+- CATEGORIES
+    - Action
+    - Comédie
+
+- TAGS
+    - Action
+    - Comédie
+    - Drame
+    - Action-Comédie
+
+- RATING
+    - 1-5 Notes
+    - Machine learning
+
+- RECHERCHE
+    - Titre
+    - Description
+    - Tags
+
+## FONCTIONALITÉS
+    - Authentification
+    - JavaScript UI
+        - React
+        - Vue
+        - Tailwind
+    - Recommender
+        - Collaborative filtering with machine learning
+    - Elasticsearch
+    - Vidéo analytics & watch history
+    - Video Host API
+        - Vimeo
+        - YouTube
+
+    - API-Driven Video Details
+        - Cast member (actors, directors)
+        - Année de sortie
+    - Intégration d'un système de paiement
+        - Stripe
+        - Braintree
+        
+
